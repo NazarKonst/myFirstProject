@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Список товаров</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th, td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #4CAF50;
+        color: white;
+      }
+      a {
+        color: #4CAF50;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Список товаров</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Название товара</th>
+          <th>Количество</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+          <tr>
+            <td>{{ item.id }}</td>
+            <td><a href="/item/{{ item.id }}">{{ item.name }}</a></td>
+            <td>{{ item.quantity }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
