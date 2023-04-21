@@ -3,12 +3,9 @@ from django.shortcuts import render
 # Create your views here.
 from django.http import HttpResponse
 
-full_name = 'Константинов Н.В.'
-just_name = 'Назар'
-just_surname = 'Константинов'
-batyname = 'Вячеславович'
-phone_number = '53-54-77'
-email = 'gwenardell@ya.ru'
+full_name = {'full_name': 'Константинов Н.В.'}
+
+about_info = {'just_name': 'Назар', 'surname': 'Константинов', 'batyname': 'Вячеславович', 'phone_number': '53-54-77', 'email': 'gwenardell@ya.ru'}
 
 items = [
     {"id": 1, "name": "Кроссовки abibas", "quantity": 5},
@@ -20,41 +17,19 @@ items = [
 
 
 def hello(request):
-    return HttpResponse(f"""
-    <h1>"Изучаем django"</h1>
-    <strong>Автор</strong>: <i>{full_name}</i>
-    """)
+    return render(request, 'main.html', full_name)
 
 
 def about(request):
-    return HttpResponse(f"""
-    <p>Имя: <b>{just_name}</b></p>
-    <p>Отчество: <b>{batyname}</b></p>
-    <p>Фамилия: <b>{just_surname}</b></p>
-    <p>Телефон: <b>{phone_number}</b></p>
-    <p>Email: <b>{email}</b></p>
-    """)
+    return render(request, 'about.html', about_info)
 
 
 def fu_item(request, id_num):
     for i in range(len(items)):
         if id_num == items[i]["id"]:
-            return HttpResponse(f"""
-                <!DOCTYPE html>
-                <html>
-                  <head>
-                    <title>Товар и количество</title>
-                  </head>
-                  <body>
-                    <h1>{items[i]["name"]}, {items[i]["quantity"]} шт.</h1>
-                  </body>
-                </html>
-                """)
-
-    return HttpResponse(f"""
-        <h1>Товар с id = {id_num} не найден</h1>
-        """)
+            return render(request, 'item.html', {'item': items[i]})
+    return render(request, 'item_not_found.html', {'item': items[i]})
 
 
 def fu_items(request):
-    return render(request, 'main.html', {'items': items})
+    return render(request, 'items.html', {'items': items})

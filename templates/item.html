@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Товар и количество</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f9f9f9;
+            }
+            table {
+                border-collapse: collapse;
+                width: 50%;
+                margin: 20px auto;
+            }
+            th, td {
+                padding: 10px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #4CAF50;
+                color: white;
+            }
+            .button {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                width: 130px; /* задаем ширину кнопки в 100 пикселей */
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Название товара</th>
+                    <th>Количество</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="text-align: center;">
+            <a class="button" href="/items/">Назад к товарам</a>
+        </div>
+    </body>
+</html>
