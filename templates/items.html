@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Перечень товаров</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px;
+      }
+
+      .button {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 8px 16px;
+        text-decoration: none;
+        margin-right: 8px;
+      }
+
+      .button:hover {
+        background-color: #3e8e41;
+      }
+
+      .button-container {
+        margin-top: 16px;
+      }
+
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 16px 0;
+      }
+
+      .card {
+        background-color: #fff;
+        padding: 16px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: calc(25% - 16px);
+        margin-right: 16px;
+        margin-left: 0;
+      }
+
+      .card:nth-child(4n) {
+        margin-right: 0;
+      }
+
+      .card-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin-bottom: 16px;
+      }
+
+      .card-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+
+      .card-brand {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+
+      .card-count {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .card-description {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Товары</h1>
+      <div class="button-container">
+        <a href="/" class="button">Главная страница</a>
+        <a href="/items/" class="button">Список товаров</a>
+        <a href="add_item/" class="button">Добавить товар</a>
+        <a href="remove_item/" class="button">Удалить товар</a>
+      </div>
+      <div class="card-container">
+        {% for item in items %}
+        <div class="card">
+          <h2 class="card-title">{{ item.name }}</h2>
+          <h3 class="card-brand">{{ item.brand }}</h3>
+          {% if item.count %}
+          <p class="card-count">Количество: {{ item.count }}</p>
+          {% else %}
+          <p class="card-count">Товар отсутствует</p>
+          {% endif %}
+          <p class="card-description">{{ item.description }}</p>
+          <a href="/item/{{ item.id }}" class="button">Подробнее</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

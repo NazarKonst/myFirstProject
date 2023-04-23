@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <title>Добавить товар</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100vh;
+        margin-top: 50px;
+      }
+      .form-container {
+        width: 50%;
+      }
+
+      label {
+        display: block;
+        margin-top: 16px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      .button-container {
+        margin-top: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      button[type="submit"] {
+        border-radius: 4px;
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+
+      a.button {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 8px 16px;
+        text-decoration: none;
+        margin-right: 8px;
+      }
+
+      a.button:hover {
+        background-color: #3e8e41;
+      }
+
+      a {
+        color: #4CAF50;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <a class="button" href="/items/">Назад к товарам</a>
+      <h1>Добавить товар</h1>
+      <form method="post">
+        {% csrf_token %}
+        <label for="id">ID:</label>
+        <input type="text" name="id" id="id" required>
+        <label for="name">Название товара:</label>
+        <input type="text" name="name" id="name" required>
+        <label for="brand">Бренд:</label>
+        <input type="text" name="brand" id="brand" required>
+        <label for="count">Количество:</label>
+        <input type="text" name="count" id="count" required>
+        <label for="description">Описание товара:</label>
+        <input type="text" name="description" id="description" required>
+        <div class="button-container">
+          <button type="submit">Добавить товар</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
